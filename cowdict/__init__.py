@@ -1,0 +1,2 @@
+
+from .cowdict import CowDict

@@ -1,0 +1,7 @@
+pep8
+pylint
+wheel
+rope
+pytest
+pytest-cov
+coverage
