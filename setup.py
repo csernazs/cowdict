@@ -7,7 +7,7 @@ DESCRIPTION = open("README.rst").read()
 
 setup(
     name="cowdict",
-    version="0.1",
+    version="0.2",
     url="https://www.github.com/csernazs/cowdict",
     packages=find_packages(),
     author="Zsolt Cserna",
