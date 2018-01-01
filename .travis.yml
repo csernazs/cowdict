@@ -6,9 +6,7 @@
     - "3.6"
     - "nightly"
   install:
-    - pip install -r requirements-test.txt
-  env:
-    - PYTHONPATH=.
+    - pip install -e .
   script:
     - py.test -vv cowdict/tests
   
