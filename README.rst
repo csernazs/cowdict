@@ -4,7 +4,7 @@ cowdict
 cowdict is a python module implementing copy-on-write pattern on dictionaries.
 
 This means that if someone change the dict-like object, the original object won't be changed but
-the differences will be tracked instad.
+the differences will be tracked instead.
 
 Nutshell
 --------
@@ -14,7 +14,7 @@ Here's a small example:
 .. code-block:: python
 
     base_dict = {"foo": "bar"}
-    cd = CowDict()
+    cd = CowDict(base_dict)
     cd["foo"] = "baz"
 
     print(base_dict["foo"]) # will still print 'bar'
@@ -35,10 +35,10 @@ be kept at minimum (compared to a full copy of the dictionary).
 
 Behind the scenes
 -----------------
-Behing the scenes, new items are added to a separate directory. Keys which exist on the base dictionary are
+Behind the scenes, new items are added to a separate directory. Keys which exist on the base dictionary are
 'deleted' by keeping a separate set object about the the keys deleted.
 Every time when a key is accessed either by `getitem` or `items` or other methods,
 these additional structures are involved to produce the correct result.
 
-While having an assumption of having the base dictinonary read-only would make the world easier, especially
+While having an assumption of having the base dictionary read-only would make the world easier, especially
 when calculating the length of the object, the library handles the situation when the base dictionary changes.
