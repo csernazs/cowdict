@@ -52,3 +52,15 @@ class CowDict(MutableMapping):
         for key in self.base:
             if key not in self.dict and key not in self.deleted_keys:
                 yield key
+
+    def __repr__(self):
+        retval = ["{"]
+        for key, value in self.items():
+            retval.append(repr(key))
+            retval.append(": ")
+            retval.append(repr(value))
+            retval.append(", ")
+
+        del retval[-1]
+        retval.append("}")
+        return "".join(retval)
