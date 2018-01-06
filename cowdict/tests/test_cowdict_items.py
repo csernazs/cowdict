@@ -120,3 +120,26 @@ def test_missing_keys_deleted():
         del cd["foo6"]
 
     assert base_dict_items == tuple(base_dict.items())
+
+
+def test_multiple_operations():
+    cd = CowDict(base_dict)
+    del cd["foo1"]
+    del cd["foo3"]
+
+    cd["new_key1"] = "new_value1"
+    cd["new_key2"] = "new_value2"
+    cd["foo4"] = "changed_value"
+
+    with pytest.raises(KeyError):
+        del cd["non_existing_key"]
+
+    assert set(cd.keys()) == {"foo2", "foo4", "foo5", "new_key1", "new_key2"}
+
+    assert set(cd.items()) == {
+        ("foo2", "bar2"),
+        ("foo4", "changed_value"),
+        ("foo5", "bar5"),
+        ("new_key1", "new_value1"),
+        ("new_key2", "new_value2"),
+    }

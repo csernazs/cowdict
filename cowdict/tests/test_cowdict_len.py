@@ -43,3 +43,15 @@ def test_keys_deleted():
     del cd["foo5"]
 
     assert len(cd) == len(base_dict) - 2
+
+
+def test_multiple_operations():
+    cd = CowDict(base_dict)
+    del cd["foo1"]
+    del cd["foo3"]
+
+    cd["foo4"] = "changed_value"
+    cd["new_key1"] = "new_value1"
+    cd["new_key2"] = "new_value2"
+
+    assert len(cd) == len(base_dict)
